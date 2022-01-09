@@ -1,0 +1,60 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.app__header {
+  background: url('../images/header-cover.jpg') no-repeat center/cover;
+  height: 40vh;
+  width: 100%;
+  color: #FFF;
+  font-size: 60px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.app__content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.app__search-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.app__search {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+  background-color: #FFFFFF;
+  /*box-shadow: 0 1px 4px rgba(33, 33, 52, 0.1);*/
+  /*border-radius: 4px;*/
+  padding: 0;
+}
+
+.app__search-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app__books {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.app__footer {
+  width: 100%;
+  height: 20vh;
+  background: #DCDCE4;
+}

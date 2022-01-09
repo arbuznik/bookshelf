@@ -1,0 +1,32 @@
+.select {
+    display: flex;
+    flex-direction: column;
+}
+
+.select__label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #32324D;
+    margin-bottom: 4px;
+}
+
+.select__selector {
+    min-width: 100px;
+    max-width: 200px;
+    padding: 10px 40px 10px 16px;
+    border: 1px solid #DCDCE4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    background: url('../../images/dropdown-icon.svg') no-repeat right 16px top 50%;
+}
+
+.select__selector:focus {
+    outline: none;
+    border: 1px solid #4945FF;
+    box-shadow: 0 1px 4px rgba(33, 33, 52, 0.1);
+}
