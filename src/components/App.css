@@ -9,11 +9,31 @@
   background: url('../images/header-cover.jpg') no-repeat center/cover;
   height: 40vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.app__title {
   color: #FFF;
   font-size: 60px;
-  display: flex;
-  text-align: center;
-  align-items: center;
+}
+
+.app__link {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #4A4A6A;
+  opacity: 1;
+  transition: color 0.3s;
+}
+
+.app__link:hover {
+  opacity: 0.8;
+  /*color: #000;*/
 }
 
 .app__content {
@@ -23,20 +43,13 @@
   row-gap: 20px;
 }
 
-.app__search-container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-
 .app__search {
   display: grid;
   grid-template-columns: 1fr auto;
-  column-gap: 10px;
-  background-color: #FFFFFF;
-  /*box-shadow: 0 1px 4px rgba(33, 33, 52, 0.1);*/
-  /*border-radius: 4px;*/
+  column-gap: 20px;
+  border-radius: 4px;
   padding: 0;
+  width: 85%;
 }
 
 .app__search-options {
@@ -44,17 +57,40 @@
   justify-content: space-between;
 }
 
-.app__books {
+.app__book-snippets {
   display: flex;
   gap: 15px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
   flex-wrap: wrap;
 }
 
 .app__footer {
   width: 100%;
+  background: url('../images/footer-cover.jpg') no-repeat center/cover;
   height: 20vh;
-  background: #DCDCE4;
+  color: #FFF;
+}
+
+@media (min-width: 768px) {
+  .app {
+    row-gap: 40px;
+  }
+
+  .app__book-snippets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .app__content {
+    row-gap: 40px;
+  }
+
+  .app__search {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .app__book-snippets {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
 }

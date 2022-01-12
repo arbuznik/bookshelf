@@ -1,34 +1,38 @@
 import './App.css';
-import {Book} from "./Book/Book";
 import {Input} from "./Input/Input";
 import {Button} from "./Button/Button";
-import {Select} from "./Select/Select";
-import {mockData} from "./mockData";
+import {Routes, Route} from "react-router-dom";
+import ListingBooks from "../routes/ListingBooks";
+import BookPage from "../routes/BookPage";
+import NotFoundPage from "../routes/NotFoundPage";
 
 
 function App() {
-  const booksList = mockData.items;
+
+
+
+  // states needed
+  // 1. user search query
+  // 2. selected category filter value
+  // 3. selected sort order value
+  // 4. total numbers of books in listing
+  // 5. books in listing
 
   return (
     <div className="app">
-      <header className="app__header">Google books</header>
-      <main className="app__content">
-        <div className="app__search-container">
-          <div className="app__search">
-            <Input placeholder={'Search for books'}/>
-            <Button buttonText={'Search'}/>
-          </div>
-          <div className="app__search-options">
-            <Select options={['art', 'science', 'culture']} name={'categoryFilter'} text={'Search category'}/>
-            <Select options={['relevance', 'newest']} name={'sortOrder'} text={'Sort by'}/>
-          </div>
+      <header className="app__header">
+        <h3 className="app__title">Bookshelf</h3>
+        <div className="app__search">
+          <Input placeholder={'Search for books'}/>
+          <Button buttonText={'Search'}/>
         </div>
-        <ul className="app__books">
-          {booksList.map(book => {
-            return <Book key={book.id} book={book}/>
-          })}
-        </ul>
-        <Button buttonText={'Load more'}/>
+      </header>
+      <main className="app__content">
+        <Routes>
+          <Route path={'/'} element={<ListingBooks />}/>
+          <Route path={'/book-:bookId'} element={<BookPage/>}/>
+          <Route path={'*'} element={<NotFoundPage/>}/>
+        </Routes>
       </main>
       <footer className="app__footer"/>
     </div>

@@ -1,28 +1,31 @@
 import './Book.css';
+import {useParams} from "react-router-dom";
+import {mockData} from "../mockData";
 
-export function Book({book: {
-  volumeInfo: {
-    title,
-    authors,
-    categories,
-    imageLinks: {
-      thumbnail
-    }
-  }}}) {
+export function Book() {
+  const {bookId} = useParams();
+  const book = mockData.items.find(book => book.id === bookId);
+  const {title, authors, categories, description, imageLinks: {thumbnail}} = book.volumeInfo;
 
-  const category = categories ? categories[0] : '';
-  const author = authors ? authors[0] : '';
-  console.log(title)
   return (
-    <li className="book">
-      <img className="book__cover" src={thumbnail} alt={title}/>
+    <div className="book">
+      <h1 className="book__title">{title}</h1>
+      <img src={thumbnail} alt={title} className="book__cover"/>
       <div className="book__content">
-        <p className="book__title">{title}</p>
-        <p className="book__author">{author}</p>
-        <p className="book__category">{category}</p>
+        {authors && <ul className="book__authors">{authors.map((author, index) =>
+          <p key={index} className="book__author">{author}</p>)}</ul>}
+        {description && <p className="book__description">{description}</p>}
+        {categories && <ul className="book__categories">{categories.map((category, index) =>
+          <p key={index} className="book__category">{category}</p>)}</ul>}
       </div>
-    </li>
+    </div>
   )
 }
 
-// изображения обложки книги, названия книги, названия категории и имен авторов. Если для книги приходит несколько категорий, то отображается только первая. Авторы отображаются все. Если не приходит какой-либо части данных, то вместо нее просто пустое место.
+// TODO: При клике на карточку происходит переход на детальную страницу книги, на которой выводятся ее данные: изображение обложки, название, все категории, все авторы, описание.
+
+// TODO: h1 doubles on book page. make separate header
+
+// TODO: full sizes book cover => make additional api request
+
+// TODO: html tag semantic + aria labels

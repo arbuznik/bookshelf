@@ -6,6 +6,7 @@
     background: url('../../images/search-icon.svg') no-repeat center;
     background-position-x: 12px;
     padding: 0 0 0 30px;
+    background-color: #FFFFFF;
 }
 
 .input:focus {
