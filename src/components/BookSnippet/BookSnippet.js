@@ -3,13 +3,19 @@ import {Link} from "react-router-dom";
 
 export function BookSnippet({book}) {
   const bookId = book.id;
-  const {title, authors, categories, imageLinks: {thumbnail}} = book.volumeInfo;
-
+  const {
+    title,
+    authors,
+    categories,
+    imageLinks: {
+      thumbnail,
+    } = {},
+  } = book.volumeInfo;
 
   return (
     <li className="bookSnippet">
       <Link to={`/book-${bookId}`}>
-        <img className="bookSnippet__cover" src={thumbnail} alt={title}/>
+        {thumbnail && <img className="bookSnippet__cover" src={thumbnail} alt={title}/>}
       </Link>
         <div className="bookSnippet__content">
           <Link to={`/book-${bookId}`} className="app__link" >

@@ -1,9 +1,17 @@
 import './Book.css';
 import {useParams} from "react-router-dom";
 import {mockData} from "../mockData";
+import {useEffect} from "react";
+import googleBooksApi from "../../app/Api";
 
 export function Book() {
   const {bookId} = useParams();
+
+  useEffect(() => {
+    // api.getBook();
+    googleBooksApi.getBooksList();
+  })
+
   const book = mockData.items.find(book => book.id === bookId);
   const {title, authors, categories, description, imageLinks: {thumbnail}} = book.volumeInfo;
 

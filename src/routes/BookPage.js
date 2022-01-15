@@ -1,10 +1,11 @@
+import './BookPage.css';
 import {Link} from "react-router-dom";
 import {Book} from "../components/Book/Book";
 
 function BookPage() {
   return (
     <>
-      <Link to={'/'} className="app__link">Back to search results</Link>
+      <Link to={'/'} className="bookPage__link app__link">Back to search results</Link>
       <Book/>
     </>
   );
