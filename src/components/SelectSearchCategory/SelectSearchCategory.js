@@ -2,7 +2,7 @@ import {Select} from "../Select/Select";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectSearchCategory, setSearchCategory} from "../SearchForm/searchFormSlice";
-import {selectCategories} from "../../routes/listingBooksSlice";
+import {selectCategories} from "../../routes/listingSlice";
 
 export function SelectSearchCategory() {
   const bookCategories = useSelector(selectCategories);

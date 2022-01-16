@@ -14,11 +14,11 @@ export function BookSnippet({book}) {
 
   return (
     <li className="bookSnippet">
-      <Link to={`/book-${bookId}`}>
+      <Link to={`/books/${bookId}`}>
         {thumbnail && <img className="bookSnippet__cover" src={thumbnail} alt={title}/>}
       </Link>
         <div className="bookSnippet__content">
-          <Link to={`/book-${bookId}`} className="app__link" >
+          <Link to={`/${bookId}`} className="app__link" >
             <h2 className="bookSnippet__title">{title}</h2>
           </Link>
           {authors && <p className="bookSnippet__author">{authors[0]}</p>}

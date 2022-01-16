@@ -31,6 +31,7 @@
   width: max-content;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin: 6px 0px;
 }
 
 .book__author {

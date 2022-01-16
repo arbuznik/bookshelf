@@ -3,32 +3,31 @@ import {BookSnippet} from "../components/BookSnippet/BookSnippet";
 import {Button} from "../components/Button/Button";
 import {SelectSearchCategory} from "../components/SelectSearchCategory/SelectSearchCategory";
 import {useDispatch, useSelector} from "react-redux";
-import googleBooksApi from "../app/Api";
-import {selectBooks, selectTotalBooksAmount, setBooks} from "./listingBooksSlice";
+import googleBooksApi from "../app/googleBookApi";
+import {selectBooks, selectOrder, selectTotalBooksAmount, setBooks} from "./listingSlice";
 import {selectSearchCategory, selectSearchQuery} from "../components/SearchForm/searchFormSlice";
 import {SelectSortOrder} from "../components/SelectSortOrder/SelectSortOrder";
 
-function ListingBooks() {
+function Listing() {
   const dispatch = useDispatch();
   const booksList = useSelector(selectBooks);
   const searchQuery = useSelector(selectSearchQuery);
   const booksCount = useSelector(selectTotalBooksAmount);
   const searchCategory = useSelector(selectSearchCategory);
+  const order = useSelector(selectOrder);
 
-// TODO: react trunk. dont make api call on first page load. or make an index page
-// TODO: multifilter category select
-
-  useEffect(() =>{
-    googleBooksApi.getBooksList(searchQuery, searchCategory)
+  useEffect(() => {
+    googleBooksApi.getBooks({
+      query: searchQuery,
+      category: searchCategory,
+      order: order,
+    })
       .then(response => {
         dispatch(setBooks(response.data))
       })
       .catch(err => console.log(err))
       .then() // finally
-
-    // dispatch(setBooks(mockData))
-
-  }, [searchQuery, searchCategory])
+  }, [searchQuery, searchCategory, order])
 
   return (
     <>
@@ -47,4 +46,4 @@ function ListingBooks() {
   );
 }
 
-export default ListingBooks;
+export default Listing;

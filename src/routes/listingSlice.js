@@ -8,8 +8,8 @@ function getUniqueCategories(books) {
   return Array.from(new Set(categories));
 }
 
-export const listingBooksSlice = createSlice({
-  name: 'listingBooks',
+export const listingSlice = createSlice({
+  name: 'listing',
   initialState: {
     books: [],
     totalBooks: 0,
@@ -30,13 +30,13 @@ export const listingBooksSlice = createSlice({
 
 
 
-export const { setBooks, setOrder } = listingBooksSlice.actions;
+export const { setBooks, setOrder } = listingSlice.actions;
 
-export const selectBooks = state => state.listingBooks.books;
-export const selectTotalBooksAmount = state => state.listingBooks.totalBooks;
-export const selectCategories = state => state.listingBooks.categories;
-export const selectOrder = state => state.listingBooks.orderBy;
+export const selectBooks = state => state.listing.books;
+export const selectTotalBooksAmount = state => state.listing.totalBooks;
+export const selectCategories = state => state.listing.categories;
+export const selectOrder = state => state.listing.orderBy;
 
-export default listingBooksSlice.reducer;
+export default listingSlice.reducer;
 
 

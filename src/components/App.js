@@ -1,38 +1,21 @@
 import './App.css';
-import {Link, Route, Routes} from "react-router-dom";
-import ListingBooks from "../routes/ListingBooks";
-import BookPage from "../routes/BookPage";
+import {Route, Routes} from "react-router-dom";
+import Listing from "../routes/Listing";
 import NotFoundPage from "../routes/NotFoundPage";
-import SearchForm from "./SearchForm/SearchForm";
+import Books from "../routes/Books";
+import Home from "../routes/Home";
+import Book from "../routes/Book";
 
 function App() {
-  // const [searchCategory, setSearchCategory] = useState('');
-
-
-  // states needed
-  // 1. user search query
-  // 2. selected   category filter value
-  // 3. selected sort order value
-  // 4. total numbers of books in listing
-  // 5. books in listing
-
   return (
-    <div className="app">
-      <header className="app__header">
-        <Link className='app__link' to={'/'}>
-          <h3 className="app__title">Bookshelf</h3>
-        </Link>
-        <SearchForm/>
-      </header>
-      <main className="app__content">
-        <Routes>
-          <Route path={'/'} element={<ListingBooks/>}/>
-          <Route path={'/:bookId'} element={<BookPage/>}/>
-          <Route path={'*'} element={<NotFoundPage/>}/>
-        </Routes>
-      </main>
-      <footer className="app__footer"/>
-    </div>
+    <Routes>
+      <Route path={'/'} element={<Home/>}/>
+      <Route path={'books'} element={<Books/>}>
+        <Route index element={<Listing/>}/>
+        <Route path={':bookId'} element={<Book/>}/>
+      </Route>
+      <Route path={'*'} element={<NotFoundPage/>}/>
+    </Routes>
   );
 }
 
@@ -40,4 +23,10 @@ export default App;
 
 
 
-// TODO: module styles, SCC
+// TODO: module styles, SCSS
+// TODO: react trunk. dont make api call on first page load. or make an index page
+// TODO: multifilter category select
+// TODO: При клике на карточку происходит переход на детальную страницу книги, на которой выводятся ее данные: изображение обложки, название, все категории, все авторы, описание.
+// TODO: h1 doubles on book page. make separate header
+// TODO: full sizes book cover => make additional api request
+// TODO: html tag semantic + aria labels

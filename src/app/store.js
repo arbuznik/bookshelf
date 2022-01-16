@@ -1,10 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import listingBooksReducer from '../routes/listingBooksSlice';
+import listingReducer from '../routes/listingSlice';
 import searchParamsReducer from '../components/SearchForm/searchFormSlice';
 
 export default configureStore({
   reducer: {
     searchParams: searchParamsReducer,
-    listingBooks: listingBooksReducer,
+    listing: listingReducer,
   }
 })
