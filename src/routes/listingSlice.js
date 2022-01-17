@@ -14,7 +14,6 @@ export const listingSlice = createSlice({
     books: [],
     totalBooks: 0,
     categories: ['All'],
-    orderBy: 'Relevance',
   },
   reducers: {
     setBooks: (state, action) => {
@@ -22,20 +21,14 @@ export const listingSlice = createSlice({
       state.totalBooks = action.payload.totalItems;
       state.categories = ['All'].concat(getUniqueCategories(action.payload.items));
     },
-    setOrder: (state, action) => {
-      state.orderBy = action.payload;
-    }
   }
 })
 
-
-
-export const { setBooks, setOrder } = listingSlice.actions;
+export const { setBooks } = listingSlice.actions;
 
 export const selectBooks = state => state.listing.books;
 export const selectTotalBooksAmount = state => state.listing.totalBooks;
 export const selectCategories = state => state.listing.categories;
-export const selectOrder = state => state.listing.orderBy;
 
 export default listingSlice.reducer;
 

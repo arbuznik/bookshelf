@@ -1,6 +1,6 @@
 import {Select} from "../Select/Select";
 import {useDispatch, useSelector} from "react-redux";
-import {selectOrder, setOrder} from '../../routes/listingSlice'
+import {selectOrder, setOrder} from "../SearchForm/searchFormSlice";
 
 export function SelectSortOrder() {
   const sortOptions = ['Relevance', 'Newest'];

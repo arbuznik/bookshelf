@@ -4,9 +4,11 @@ import {Button} from "../components/Button/Button";
 import {SelectSearchCategory} from "../components/SelectSearchCategory/SelectSearchCategory";
 import {useDispatch, useSelector} from "react-redux";
 import googleBooksApi from "../app/googleBookApi";
-import {selectBooks, selectOrder, selectTotalBooksAmount, setBooks} from "./listingSlice";
-import {selectSearchCategory, selectSearchQuery} from "../components/SearchForm/searchFormSlice";
+import {selectBooks, selectTotalBooksAmount, setBooks} from "./listingSlice";
+import {selectOrder, selectSearchCategory, selectSearchQuery} from "../components/SearchForm/searchFormSlice";
 import {SelectSortOrder} from "../components/SelectSortOrder/SelectSortOrder";
+import Spinner from "../components/Spinner/Spinner";
+import {selectIsLoading, setIsLoading} from "../app/statusSlice";
 
 function Listing() {
   const dispatch = useDispatch();
@@ -15,8 +17,10 @@ function Listing() {
   const booksCount = useSelector(selectTotalBooksAmount);
   const searchCategory = useSelector(selectSearchCategory);
   const order = useSelector(selectOrder);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
+    dispatch(setIsLoading(true));
     googleBooksApi.getBooks({
       query: searchQuery,
       category: searchCategory,
@@ -26,23 +30,26 @@ function Listing() {
         dispatch(setBooks(response.data))
       })
       .catch(err => console.log(err))
-      .then() // finally
+      .then(() => dispatch(setIsLoading(false)))
   }, [searchQuery, searchCategory, order])
 
   return (
-    <>
-      <div className="app__search-options">
-        <SelectSearchCategory/>
-        <SelectSortOrder/>
-      </div>
-      <p className="app__books-count">Showing {booksList.length} out of {booksCount} books</p>
-      <ul className="app__book-snippets">
-        {booksList && booksList.map(book => {
-          return <BookSnippet key={book.id} book={book}/>
-        })}
-      </ul>
-      <Button buttonText={'Load more'}/>
-    </>
+    isLoading ?
+      <Spinner/>
+      :
+      <>
+        <div className="app__search-options">
+          <SelectSearchCategory/>
+          <SelectSortOrder/>
+        </div>
+        <p className="app__books-count">Showing {booksList.length} out of {booksCount} books</p>
+        <ul className="app__book-snippets">
+          {booksList && booksList.map(book => {
+            return <BookSnippet key={book.id} book={book}/>
+          })}
+        </ul>
+        <Button buttonText={'Load more'}/>
+      </>
   );
 }
 

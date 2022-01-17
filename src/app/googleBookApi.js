@@ -24,7 +24,7 @@ class GoogleBooksApi {
 
     const url = `?q=` + searchQuery + searchCategory + searchParams;
 
-    console.log(url);
+    console.log('https://www.googleapis.com/books/v1/volumes' + url);
     return this.api.get(url)
   }
 
