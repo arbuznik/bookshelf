@@ -54,6 +54,17 @@
   word-wrap: break-word;
 }
 
+.book__reviews {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.book__star {
+  padding: 3px;
+}
+
 @media (min-width: 768px) {
   .book {
     grid-template-columns: 330px 400px;
