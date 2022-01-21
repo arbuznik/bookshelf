@@ -2,15 +2,17 @@ import {Input} from "../Input/Input";
 import {Button} from "../Button/Button";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {selectSearchQuery, setSearchQuery} from "./searchParamsSlice";
+import {selectSearchQuery, updateSearchQuery} from "./searchParamsSlice";
 import {useLocation, useNavigate} from "react-router-dom";
 
 function SearchForm() {
-  const [query, setQuery] = useState('');
-  const currentQuery = useSelector(selectSearchQuery);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUrl = useLocation();
+
+  const [query, setQuery] = useState('');
+
+  const currentQuery = useSelector(selectSearchQuery);
 
   useEffect(() => {
     if (currentUrl.pathname !== '/') {
@@ -20,7 +22,8 @@ function SearchForm() {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    dispatch(setSearchQuery(query));
+
+    dispatch(updateSearchQuery(query));
     navigate(`/books`);
   };
 

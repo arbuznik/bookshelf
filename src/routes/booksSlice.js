@@ -9,14 +9,26 @@ const getUniqueCategories = books => {
   return Array.from(new Set(categories));
 };
 
-export const fetchBooks = createAsyncThunk('books/fetchBooks', async (config) => {
-  const response = await api.getBooks(config);
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async ({query, category, order, maxResults, page}, {getState}) => {
+  const state = getState();
+
+  const searchQuery = query.replace(/\s+/g, '+');
+  const searchCategory = category && category !== 'All' ? `+subject:'${category}'` : '';
+  const startIndex = (page * maxResults) - maxResults;
+  const searchParams = `&startIndex=${startIndex}&maxResults=${maxResults}&orderBy=${order}`;
+
+  const path = `?q=` + searchQuery + searchCategory + searchParams;
+
+  const response = await api(path);
+
   console.log(response.data);
-  return response.data;
+  return {books: response.data, page: state.searchParams.page};
 })
 
 export const fetchBook = createAsyncThunk('book/fetchBook', async ({bookId}) => {
-  const response = await api.getBook(bookId);
+  const path = `/` + bookId;
+
+  const response = await api(path);
   console.log(response.data);
   return response.data;
 })
@@ -31,15 +43,7 @@ export const booksSlice = createSlice({
     status: 'idle',
     error: null,
   },
-  reducers: {
-    loadBooks: (state, action) => {
-      state.items += action.payload.item;
-      state.categories = state.categories.concat(getUniqueCategories(action.payload.items));
-    },
-    loadBook: (state, action) => {
-      state.item = action.payload.item;
-    }
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchBooks.pending, (state) => {
@@ -47,9 +51,24 @@ export const booksSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.items = action.payload.items;
-        state.totalItems = action.payload.totalItems;
-        state.categories = ['All'].concat(getUniqueCategories(action.payload.items));
+
+        const {books, page} = action.payload;
+
+        state.totalItems = books.totalItems;
+
+        if (!books.items) return;
+
+        if (page === 1) {
+          state.items = books.items;
+          state.categories = ['All'].concat(getUniqueCategories(books.items));
+        } else {
+          state.items = state.items.concat(books.items);
+
+          const newCategories = getUniqueCategories(books.items);
+          state.categories = state.categories.concat(newCategories.filter(category => {
+            return !state.categories.includes(category);
+          }));
+        }
       })
       .addCase(fetchBooks.rejected, (state, action) => {
         state.status = 'failed';
@@ -68,8 +87,6 @@ export const booksSlice = createSlice({
       })
   }
 })
-
-export const {loadBooks, loadBook} = booksSlice.actions;
 
 export const selectItem = state => state.books.item;
 export const selectItems = state => state.books.items;

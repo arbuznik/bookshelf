@@ -11,19 +11,31 @@ export const searchParamsSlice = createSlice({
   },
   reducers: {
     //TODO: get rid of setters. components should not be writing to state
-    setSearchQuery: (state, action) => {
-      state.query = action.payload;
+    updateSearchQuery: (state, action) => {
+      if (state.query !== action.payload) {
+        state.query = action.payload;
+        state.page = 1;
+      }
     },
-    setSearchCategory: (state, action) => {
-      state.category = action.payload;
+    updateSearchCategory: (state, action) => {
+      if (state.category !== action.payload) {
+        state.category = action.payload;
+        state.page = 1;
+      }
     },
-    setOrder: (state, action) => {
-      state.orderBy = action.payload;
+    updateOrder: (state, action) => {
+      if (state.orderBy !== action.payload) {
+        state.orderBy = action.payload;
+        state.page = 1;
+      }
+    },
+    incrementPage: (state) => {
+      state.page++;
     }
   }
 })
 
-export const { setSearchQuery, setSearchCategory, setOrder } = searchParamsSlice.actions;
+export const { updateSearchQuery, updateSearchCategory, updateOrder, incrementPage } = searchParamsSlice.actions;
 
 export const selectSearchQuery = state => state.searchParams.query;
 export const selectSearchCategory = state => state.searchParams.category;

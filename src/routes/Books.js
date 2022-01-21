@@ -5,6 +5,7 @@ import {CategorySelect} from "../components/CategorySelect/CategorySelect";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchBooks, selectItems, selectTotalItems} from "./booksSlice";
 import {
+  incrementPage,
   selectMaxResults,
   selectOrder, selectPage,
   selectSearchCategory,
@@ -30,7 +31,7 @@ function Books() {
   }, [query, category, order, maxResults, page])
 
   const handleLoadMoreClick = () => {
-    // dispatch(setCurrentListingPage(currentListingPage + 1));
+    dispatch(incrementPage());
   };
 
   return (
@@ -42,6 +43,8 @@ function Books() {
           <CategorySelect/>
           <SortOrderSelect/>
         </div>
+        <Button buttonText={'Load more'}
+                onClick={handleLoadMoreClick}/>
         <p className="app__books-count">Showing {booksList.length} out of {booksCount} books</p>
         <ul className="app__book-snippets">
           {booksList && booksList.map(book => {

@@ -23,7 +23,9 @@ export default App;
 
 // TODO: reducers actions naming like something already happened (postAdded)
 
-// TODO: switching sorting to newest causes duplicate books in listing
+// TODO: add animation on LoadMore button
+// TODO: dont show "load more" if there is nothing more to load
+// TODO: switching sorting to newest causes duplicate books in listings
 // TODO: Пагинация реализована по принципу 'load more'. Ниже блока с карточками находится кнопка 'Load more', по клику на нее к уже загруженным книгам подгружаются еще. Шаг пагинации - 30.
 // TODO: from book page link back to search results
 // TODO: error page

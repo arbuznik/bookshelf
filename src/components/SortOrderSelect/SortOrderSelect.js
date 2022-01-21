@@ -1,22 +1,22 @@
 import {Select} from "../Select/Select";
 import {useDispatch, useSelector} from "react-redux";
-import {selectOrder, setOrder} from "../SearchForm/searchParamsSlice";
+import {selectOrder, updateOrder} from "../SearchForm/searchParamsSlice";
 
 export function SortOrderSelect() {
   const dispatch = useDispatch();
 
   const sortOptions = ['Relevance', 'Newest'];
-  const value = useSelector(selectOrder);
+  const currentOption = useSelector(selectOrder);
 
-  function handleChange(order) {
-    dispatch(setOrder(order));
-  }
+  const handleChange = option => {
+    dispatch(updateOrder(option));
+  };
 
   return (
     <Select options={sortOptions}
             name={'sortOrder'}
             text={'Sort by'}
             onChange={handleChange}
-            selected={value}/>
+            selected={currentOption}/>
   )
 }
