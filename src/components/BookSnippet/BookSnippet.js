@@ -14,13 +14,16 @@ export function BookSnippet({book}) {
 
   return (
     <li className="bookSnippet">
-      <Link className="bookSnippet__link" to={`/books/${bookId}`}>
-        {thumbnail && <img className="bookSnippet__cover" src={thumbnail} alt={title}/>}
+      <Link className="bookSnippet__link"
+            to={`/books/${bookId}`}>
+        {thumbnail && <img className="bookSnippet__cover"
+                           src={thumbnail}
+                           alt={title}/>}
         <div className="bookSnippet__content">
-        <h2 className="bookSnippet__title">{title}</h2>
-        {authors && <p className="bookSnippet__author">{authors[0]}</p>}
-        {categories && <p className="bookSnippet__category">{categories[0]}</p>}
-      </div>
+          <h2 className="bookSnippet__title">{title}</h2>
+          {authors && <p className="bookSnippet__author">{authors[0]}</p>}
+          {categories && <p className="bookSnippet__category">{categories[0]}</p>}
+        </div>
       </Link>
     </li>
   )

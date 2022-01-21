@@ -82,7 +82,7 @@ export const mockData = {
         "authors": [
           "Stacy C. Hollander"
         ],
-        "publisher": "Studio Books",
+        "publisher": "Studio Layout",
         "publishedDate": "1991",
         "description": "Shows folk paintings by Harry Lieberman, and includes the artist's comments on the background and symbolism of each work",
         "industryIdentifiers": [
@@ -1095,7 +1095,7 @@ export const mockData = {
           "Ralph Gordon Harry",
           "John Bernard Wilkinson"
         ],
-        "publisher": "Lawrence Hill Books",
+        "publisher": "Lawrence Hill Layout",
         "publishedDate": "1973",
         "industryIdentifiers": [
           {
@@ -1500,7 +1500,7 @@ export const mockData = {
           "Edward Lucie-Smith",
           "Harry Holland"
         ],
-        "publisher": "Art Books International Limited",
+        "publisher": "Art Layout International Limited",
         "publishedDate": "1991",
         "industryIdentifiers": [
           {

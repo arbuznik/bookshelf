@@ -1,16 +1,15 @@
 import './Book.css';
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import googleBooksApi from "../app/googleBookApi";
-import {selectIsLoading, setIsLoading} from "../app/statusSlice";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Spinner from "../components/Spinner/Spinner";
+import {fetchBook, selectItem} from "./booksSlice";
 
 function Book() {
-  const {bookId} = useParams();
-  const [book, setBook] = useState({})
-  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
+
+  const {bookId} = useParams();
+
   const {
     volumeInfo: {
       title,
@@ -24,21 +23,14 @@ function Book() {
         thumbnail,
       } = {},
     } = {},
-  } = book;
+  } = useSelector(selectItem);
 
   useEffect(() => {
-    dispatch(setIsLoading(true));
-    googleBooksApi.getBook(bookId)
-      .then(response => {
-        console.log(response.data);
-        setBook(response.data);
-      })
-      .catch(err => console.log(err))
-      .then(() => dispatch(setIsLoading(false)))
+    dispatch(fetchBook({bookId}));
   }, [bookId])
-
+// TODO: empty page for direct books/id url with incorrect id
   return (
-    isLoading ?
+    false ? // TODO: dont forget this
       <Spinner/>
       :
       <div className="book">
