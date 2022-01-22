@@ -1,6 +1,6 @@
-import '../components/App.css';
-import {Link, Outlet} from "react-router-dom";
-import SearchForm from "../components/SearchForm/SearchForm";
+import '../components/App.css'
+import {Link, Outlet} from "react-router-dom"
+import SearchForm from "../components/SearchForm/SearchForm"
 
 
 function Layout() {
@@ -17,7 +17,7 @@ function Layout() {
       </main>
       <footer className="app__footer"/>
     </div>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

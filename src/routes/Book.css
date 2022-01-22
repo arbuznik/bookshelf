@@ -11,6 +11,7 @@
 }
 
 .book__cover {
+  border: 1px #32324D solid;
   width: 100%;
 }
 

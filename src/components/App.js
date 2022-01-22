@@ -1,10 +1,10 @@
-import './App.css';
-import {Route, Routes} from "react-router-dom";
-import Books from "../routes/Books";
-import NotFoundPage from "../routes/NotFoundPage";
-import Layout from "../routes/Layout";
-import Home from "../routes/Home";
-import Book from "../routes/Book";
+import './App.css'
+import {Route, Routes} from "react-router-dom"
+import Books from "../routes/Books"
+import NotFoundPage from "../routes/NotFoundPage"
+import Layout from "../routes/Layout"
+import Home from "../routes/Home"
+import Book from "../routes/Book"
 
 function App() {
   return (
@@ -16,14 +16,16 @@ function App() {
       </Route>
       <Route path={'*'} element={<NotFoundPage/>}/>
     </Routes>
-  );
+  )
 }
 
-export default App;
+export default App
 
+//TODO: watch Glazov webinar
+// TODO: on filter options select, scroll gentle to results
 // TODO: reducers actions naming like something already happened (postAdded)
 
-// TODO: add animation on LoadMore button
+// TODO: add animation on LoadMore button. also disable while loading to prevent more presses
 // TODO: dont show "load more" if there is nothing more to load
 // TODO: switching sorting to newest causes duplicate books in listings
 // TODO: Пагинация реализована по принципу 'load more'. Ниже блока с карточками находится кнопка 'Load more', по клику на нее к уже загруженным книгам подгружаются еще. Шаг пагинации - 30.
@@ -35,5 +37,6 @@ export default App;
 // TODO: html tag semantic + aria labels
 // TODO: loading animations for snippets // books
 // TODO: select max results on listing
+// TODO: mobile. book page opens in scrolled down state
 
 // https://github.com/fugr-ru/frontend-javascript-test-2

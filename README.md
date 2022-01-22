@@ -5,7 +5,7 @@ Search and explore vast books catalog. Powered by [Google books](https://develop
 ## Stack
 - React, Redux (Toolkit), React-router
 - Module styles, SCSS
-- Axios for API calls
+- Axios
 
 ## Run locally
 

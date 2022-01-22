@@ -1,14 +1,16 @@
-import './Book.css';
-import {useParams} from "react-router-dom";
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import Spinner from "../components/Spinner/Spinner";
-import {fetchBook, selectItem} from "./booksSlice";
+import './Book.css'
+import {useParams} from "react-router-dom"
+import {useEffect} from "react"
+import {useDispatch, useSelector} from "react-redux"
+import Spinner from "../components/Spinner/Spinner"
+import {fetchBook, selectItem} from "./booksSlice"
 
 function Book() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const {bookId} = useParams();
+  let {bookId} = useParams()
+  // remove hash
+  bookId = bookId.slice(0, -21)
 
   const {
     volumeInfo: {
@@ -23,12 +25,24 @@ function Book() {
         thumbnail,
       } = {},
     } = {},
-  } = useSelector(selectItem);
+  } = useSelector(selectItem)
 
   useEffect(() => {
-    dispatch(fetchBook({bookId}));
+    dispatch(fetchBook({bookId}))
   }, [bookId])
 // TODO: empty page for direct books/id url with incorrect id
+
+  const Rating = averageRating => {
+    if (averageRating) {
+      return (
+        <p className="book__reviews">
+          {Array.from(Array(averageRating).keys()).map((val, i) => {
+            return <span key={i} className="book__star">⭐</span>
+          })} based on {ratingsCount} reviews</p>
+      )
+    }
+  }
+
   return (
     false ? // TODO: dont forget this
       <Spinner/>
@@ -40,7 +54,7 @@ function Book() {
           {authors && <ul className="book__authors">{authors.map((author, index) =>
             <p key={index} className="book__author">{author}</p>)}</ul>}
           {description && <p dangerouslySetInnerHTML={{__html: description}} className="book__description"/>}
-          {averageRating && <p className="book__reviews">{Array(averageRating).fill(<span className="book__star">⭐</span>).map((val) => val)} based on {ratingsCount} reviews</p>}
+          <Rating/>
           {categories && <ul className="book__categories">{categories.map((category, index) =>
             <p key={index} className="book__category">{category}</p>)}</ul>}
         </div>
@@ -48,4 +62,4 @@ function Book() {
   )
 }
 
-export default Book;
+export default Book

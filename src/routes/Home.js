@@ -1,5 +1,5 @@
-import '../components/App.css';
-import SearchForm from "../components/SearchForm/SearchForm";
+import '../components/App.css'
+import SearchForm from "../components/SearchForm/SearchForm"
 
 function Home() {
   return (
@@ -9,7 +9,7 @@ function Home() {
         <SearchForm/>
       </main>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

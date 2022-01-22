@@ -1,4 +1,4 @@
-import './Select.css';
+import './Select.css'
 
 export function Select({options, name, text, selected, onChange}) {
   return (

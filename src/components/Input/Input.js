@@ -1,4 +1,4 @@
-import './Input.css';
+import './Input.css'
 
 export function Input({placeholder, onChange, value}) {
   return <input autoFocus
@@ -6,5 +6,5 @@ export function Input({placeholder, onChange, value}) {
                 className="input"
                 value={value}
                 placeholder={placeholder}
-                onChange={(evt) => onChange(evt.target.value)}/>;
+                onChange={(evt) => onChange(evt.target.value)}/>
 }

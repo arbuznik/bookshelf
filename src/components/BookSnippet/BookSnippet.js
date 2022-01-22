@@ -1,8 +1,8 @@
-import './BookSnippet.css';
-import {Link} from "react-router-dom";
+import './BookSnippet.css'
+import {Link} from "react-router-dom"
 
 export function BookSnippet({book}) {
-  const bookId = book.id;
+  const bookId = book.id
   const {
     title,
     authors,
@@ -10,7 +10,7 @@ export function BookSnippet({book}) {
     imageLinks: {
       thumbnail,
     } = {},
-  } = book.volumeInfo;
+  } = book.volumeInfo
 
   return (
     <li className="bookSnippet">

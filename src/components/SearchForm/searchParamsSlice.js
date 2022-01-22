@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit"
 
 export const searchParamsSlice = createSlice({
   name: 'searchParams',
@@ -13,34 +13,34 @@ export const searchParamsSlice = createSlice({
     //TODO: get rid of setters. components should not be writing to state
     updateSearchQuery: (state, action) => {
       if (state.query !== action.payload) {
-        state.query = action.payload;
-        state.page = 1;
+        state.query = action.payload
+        state.page = 1
       }
     },
     updateSearchCategory: (state, action) => {
       if (state.category !== action.payload) {
-        state.category = action.payload;
-        state.page = 1;
+        state.category = action.payload
+        state.page = 1
       }
     },
     updateOrder: (state, action) => {
       if (state.orderBy !== action.payload) {
-        state.orderBy = action.payload;
-        state.page = 1;
+        state.orderBy = action.payload
+        state.page = 1
       }
     },
     incrementPage: (state) => {
-      state.page++;
+      state.page++
     }
   }
 })
 
-export const { updateSearchQuery, updateSearchCategory, updateOrder, incrementPage } = searchParamsSlice.actions;
+export const { updateSearchQuery, updateSearchCategory, updateOrder, incrementPage } = searchParamsSlice.actions
 
-export const selectSearchQuery = state => state.searchParams.query;
-export const selectSearchCategory = state => state.searchParams.category;
-export const selectOrder = state => state.searchParams.orderBy;
-export const selectMaxResults = state => state.searchParams.maxResults;
-export const selectPage = state => state.searchParams.page;
+export const selectSearchQuery = state => state.searchParams.query
+export const selectSearchCategory = state => state.searchParams.category
+export const selectOrder = state => state.searchParams.orderBy
+export const selectMaxResults = state => state.searchParams.maxResults
+export const selectPage = state => state.searchParams.page
 
-export default searchParamsSlice.reducer;
+export default searchParamsSlice.reducer
