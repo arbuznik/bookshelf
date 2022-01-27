@@ -10,20 +10,27 @@ function App() {
   return (
     <Routes>
       <Route path={'/'} element={<Home/>}/>
+
       <Route path={'books'} element={<Layout/>}>
         <Route index element={<Books/>}/>
         <Route path={':bookId'} element={<Book/>}/>
       </Route>
-      <Route path={'*'} element={<NotFoundPage/>}/>
+
+      <Route path={'*'} element={<Layout/>}>
+        <Route path={'*'} element={<NotFoundPage/>}/>
+      </Route>
     </Routes>
   )
 }
+
+
 
 export default App
 
 //TODO: watch Glazov webinar
 // TODO: on filter options select, scroll gentle to results
-// TODO: reducers actions naming like something already happened (postAdded)
+
+// TODO: incorrect book ID => navigate to 404
 
 // TODO: add animation on LoadMore button. also disable while loading to prevent more presses
 // TODO: dont show "load more" if there is nothing more to load

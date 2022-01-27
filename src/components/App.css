@@ -63,6 +63,32 @@
   justify-content: space-between;
 }
 
+.app__not-found {
+  display: flex;
+  column-gap: 20px;
+}
+
+.app__not-found-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__not-found-image {
+  width: 30%;
+  height: 30%;
+}
+
+.app__not-found-title {
+  font-size: 40px;
+}
+
+.app__not-found-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .app__books-count {
   font-style: normal;
   font-weight: 600;
@@ -89,10 +115,19 @@
     row-gap: 40px;
   }
 
+  .app__not-found {
+    column-gap: 40px;
+  }
+
+  .app__not-found-content {
+    row-gap: 10px;
+  }
+
   .app__book-snippets {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
   .app__content {
     row-gap: 40px;
   }
