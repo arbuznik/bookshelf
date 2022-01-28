@@ -1,0 +1,14 @@
+.searchForm {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 20px;
+  border-radius: 4px;
+  padding: 0;
+  width: 85%;
+}
+
+@media (min-width: 768px) {
+  .searchForm {
+    width: 60%;
+  }
+}

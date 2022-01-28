@@ -1,9 +1,13 @@
+import styles from "./SearchForm.module.css"
+
+import {useEffect, useState} from "react"
+import {useLocation, useNavigate} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
+
+import {selectSearchQuery, updateSearchQuery} from "./searchParamsSlice"
+
 import {Input} from "../Input/Input"
 import {Button} from "../Button/Button"
-import {useEffect, useState} from "react"
-import {useDispatch, useSelector} from "react-redux"
-import {selectSearchQuery, updateSearchQuery} from "./searchParamsSlice"
-import {useLocation, useNavigate} from "react-router-dom"
 
 function SearchForm() {
   const dispatch = useDispatch()
@@ -31,7 +35,7 @@ function SearchForm() {
     setQuery(value)
   }
 
-  return <form className="app__search"
+  return <form className={styles.searchForm}
                onSubmit={handleSubmit}>
     <Input placeholder={"Search for books"}
            value={query}

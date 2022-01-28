@@ -4,22 +4,22 @@
   column-gap: 50px;
 }
 
-.book__content {
+.content {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
 
-.book__cover {
+.cover {
   border: 1px #32324D solid;
   width: 100%;
 }
 
-.book__categories {
+.categories {
   width: min-content;
 }
 
-.book__category {
+.category {
   display: flex;
   padding: 0 6px;
   background: #EAEAEF;
@@ -36,7 +36,7 @@
   margin: 6px 0;
 }
 
-.book__author {
+.author {
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -47,7 +47,7 @@
   text-overflow: ellipsis;
 }
 
-.book__description {
+.description {
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -55,36 +55,38 @@
   word-wrap: break-word;
 }
 
-.book__reviews {
+.reviews {
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
 }
 
-.book__star {
+.star {
   padding: 3px;
 }
 
 @media (min-width: 768px) {
   .book {
-    grid-template-columns: 330px 400px;
+    grid-template-columns: 330px 1fr;
   }
 
-  .book__title {
+  .title {
     grid-column: 1 / span 2;
   }
 
-  .book__cover {
+  .cover {
     grid-area: 2 / 1;
   }
 
-  .book__content {
+  .content {
     grid-area: 2 / 2;
   }
+}
 
-
-
-
-
+@media (min-width: 1440px) {
+  .book {
+    margin: auto;
+    grid-template-columns: 330px 600px;
+  }
 }

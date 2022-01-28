@@ -1,4 +1,4 @@
-import './BookSnippet.css'
+import styles from './BookSnippet.module.css'
 import {Link} from "react-router-dom"
 
 export function BookSnippet({book}) {
@@ -13,16 +13,16 @@ export function BookSnippet({book}) {
   } = book.volumeInfo
 
   return (
-    <li className="bookSnippet">
-      <Link className="bookSnippet__link"
+    <li className={styles.bookSnippet}>
+      <Link className={styles.link}
             to={`/books/${bookId}`}>
-        {thumbnail && <img className="bookSnippet__cover"
+        {thumbnail && <img className={styles.cover}
                            src={thumbnail}
                            alt={title}/>}
-        <div className="bookSnippet__content">
-          <h2 className="bookSnippet__title">{title}</h2>
-          {authors && <p className="bookSnippet__author">{authors[0]}</p>}
-          {categories && <p className="bookSnippet__category">{categories[0]}</p>}
+        <div className={styles.content}>
+          <h2 className={styles.title}>{title}</h2>
+          {authors && <p className={styles.author}>{authors[0]}</p>}
+          {categories && <p className={styles.category}>{categories[0]}</p>}
         </div>
       </Link>
     </li>

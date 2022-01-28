@@ -1,6 +1,8 @@
-import {Select} from "../Select/Select"
 import {useDispatch, useSelector} from "react-redux"
+
 import {selectOrder, updateOrder} from "../SearchForm/searchParamsSlice"
+
+import {Select} from "../Select/Select"
 
 export function SortOrderSelect() {
   const dispatch = useDispatch()

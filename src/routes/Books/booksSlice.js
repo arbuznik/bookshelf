@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, nanoid} from "@reduxjs/toolkit"
-import {api} from "../app/api"
+import {api} from "../../app/api"
 
 const getUniqueCategories = books => {
   const categories = books

@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
-import {BookSnippet} from "../components/BookSnippet/BookSnippet"
-import {Button} from "../components/Button/Button"
-import {CategorySelect} from "../components/CategorySelect/CategorySelect"
+import styles from "./Books.module.css"
+
+import {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
+
 import {fetchBooks, selectItems, selectTotalItems} from "./booksSlice"
 import {
   incrementPage,
@@ -10,9 +10,13 @@ import {
   selectOrder, selectPage,
   selectSearchCategory,
   selectSearchQuery
-} from "../components/SearchForm/searchParamsSlice"
-import {SortOrderSelect} from "../components/SortOrderSelect/SortOrderSelect"
-import Spinner from "../components/Spinner/Spinner"
+} from "../../components/SearchForm/searchParamsSlice"
+
+import {BookSnippet} from "../../components/BookSnippet/BookSnippet"
+import {CategorySelect} from "../../components/CategorySelect/CategorySelect"
+import {Button} from "../../components/Button/Button"
+import {SortOrderSelect} from "../../components/SortOrderSelect/SortOrderSelect"
+import Spinner from "../../components/Spinner/Spinner"
 
 function Books() {
   const dispatch = useDispatch()
@@ -39,14 +43,14 @@ function Books() {
       <Spinner/>
       :
       <>
-        <div className="app__search-options">
+        <div className={styles.searchOptions}>
           <CategorySelect/>
           <SortOrderSelect/>
         </div>
         <Button buttonText={'Load more'}
                 onClick={handleLoadMoreClick}/>
-        <p className="app__books-count">Showing {booksList.length} out of {booksCount} books</p>
-        <ul className="app__book-snippets">
+        <p className={styles.booksCount}>Showing {booksList.length} out of {booksCount} books</p>
+        <ul className={styles.bookSnippets}>
           {booksList && booksList.map(book => {
             return <BookSnippet key={book.id}
                                 book={book}/>

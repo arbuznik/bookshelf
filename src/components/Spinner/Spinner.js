@@ -1,8 +1,8 @@
-import './Spinner.css'
+import styles from './Spinner.module.css'
 
 function Spinner() {
   return (
-    <div className="spinner"/>
+    <div className={styles.spinner}/>
   )
 }
 

@@ -1,8 +1,9 @@
-import {Select} from "../Select/Select"
-import React from "react"
 import {useDispatch, useSelector} from "react-redux"
+
 import {selectSearchCategory, updateSearchCategory} from "../SearchForm/searchParamsSlice"
-import {selectCategories} from "../../routes/booksSlice"
+import {selectCategories} from "../../routes/Books/booksSlice"
+
+import {Select} from "../Select/Select"
 
 export function CategorySelect() {
   const dispatch = useDispatch()

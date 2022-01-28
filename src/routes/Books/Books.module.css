@@ -1,0 +1,32 @@
+.searchOptions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booksCount {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #4A4A6A;
+}
+
+.bookSnippets {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .bookSnippets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1440px) {
+  .bookSnippets {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+}
