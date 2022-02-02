@@ -1,3 +1,5 @@
+@use '../app';
+
 .input {
     background: #FFFFFF;
     border: 1px solid #EAEAEF;
@@ -11,6 +13,6 @@
 
 .input:focus {
     outline: none;
-    border: 1px solid #4945FF;
+    border: 1px solid app.$primary-color;
     box-shadow: 0 1px 4px rgba(33, 33, 52, 0.1);
 }

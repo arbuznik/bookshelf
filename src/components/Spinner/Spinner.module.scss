@@ -1,5 +1,7 @@
+@use '../app';
+
 .spinner {
-  color: #4945FF;
+  color: app.$primary-color;
   font-size: 20px;
   margin: 100px auto;
   width: 1em;

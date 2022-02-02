@@ -1,4 +1,4 @@
-import styles from './BookSnippet.module.css'
+import styles from './BookSnippet.module.scss'
 import {Link} from "react-router-dom"
 
 export function BookSnippet({book}) {

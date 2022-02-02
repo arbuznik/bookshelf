@@ -1,3 +1,5 @@
+@use '../app';
+
 .bookSnippet {
     display: flex;
     width: 100%;
@@ -14,7 +16,7 @@
 }
 
 .link:hover {
-    border: 1px solid #4945FF;
+    border: 1px solid app.$primary-color;
 }
 
 .cover {
@@ -42,7 +44,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
-    color: #4A4A6A;
+    color: app.$primary-text-color;
     max-height: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,7 +55,7 @@
     font-weight: normal;
     font-size: 12px;
     line-height: 16px;
-    color: #8E8EA9;
+    color: app.$secondary-text-color;
     overflow-y: hidden;
     max-height: 100%;
     text-overflow: ellipsis;
@@ -65,7 +67,7 @@
     align-self: end;
     padding: 0 6px;
     background: #EAEAEF;
-    color: #4A4A6A;
+    color: app.$primary-text-color;
     box-sizing: border-box;
     border-radius: 2px;
     font-style: normal;

@@ -1,4 +1,4 @@
-import styles from './Button.module.css'
+import styles from './Button.module.scss'
 
 export function Button({buttonText, onClick}) {
   return <button className={styles.button}

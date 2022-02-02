@@ -1,4 +1,4 @@
-import styles from './Select.module.css'
+import styles from './Select.module.scss'
 
 export function Select({options, name, text, selected, onChange}) {
   return (

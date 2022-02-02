@@ -1,10 +1,10 @@
 # Bookshelf
 
-Search and explore vast books catalog. Powered by [Google books](https://developers.google.com/books)
+Search and explore vast books catalog, powered by [Google books](https://developers.google.com/books)
 
 ## Stack
 - React, Redux (Toolkit), React-router
-- Module styles, SCSS
+- CSS-modules, SCSS
 - Axios
 
 ## Run locally

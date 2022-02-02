@@ -1,4 +1,4 @@
-import styles from "./SearchForm.module.css"
+import styles from "./SearchForm.module.scss"
 
 import {useEffect, useState} from "react"
 import {useLocation, useNavigate} from "react-router-dom"
