@@ -23,19 +23,12 @@ function App() {
 
 export default App
 
-//TODO: watch Glazov webinar
-// TODO: on filter options select, scroll gentle to results
-
-// TODO: incorrect book ID => navigate to 404
 
 // TODO: add animation on LoadMore button. also disable while loading to prevent more presses
 // TODO: dont show "load more" if there is nothing more to load
-// TODO: switching sorting to newest causes duplicate books in listings
-// TODO: Пагинация реализована по принципу 'load more'. Ниже блока с карточками находится кнопка 'Load more', по клику на нее к уже загруженным книгам подгружаются еще. Шаг пагинации - 30.
 // TODO: from book page link back to search results
 // TODO: error page
 // TODO: react trunk. dont make api call on first page load. or make an index page
-// TODO: module styles, SCSS
 // TODO: multifilter category select (check if api allows that)
 // TODO: html tag semantic + aria labels
 // TODO: loading animations for snippets // books

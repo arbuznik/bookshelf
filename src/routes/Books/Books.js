@@ -3,7 +3,7 @@ import styles from "./Books.module.scss"
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 
-import {fetchBooks, selectItems, selectTotalItems} from "./booksSlice"
+import {fetchBooks, selectError, selectItems, selectStatus, selectTotalItems} from "./booksSlice"
 import {
   incrementPage,
   selectMaxResults,
@@ -30,6 +30,9 @@ function Books() {
   const maxResults = useSelector(selectMaxResults)
   const page = useSelector(selectPage)
 
+  const pageStatus = useSelector(selectStatus)
+  const errorMessage = useSelector(selectError)
+
   useEffect(() => {
     dispatch(fetchBooks({query, category, order, maxResults, page}))
   }, [query, category, order, maxResults, page])
@@ -38,10 +41,12 @@ function Books() {
     dispatch(incrementPage())
   }
 
-  return (
-    false ? // TODO: remove
-      <Spinner/>
-      :
+  if (pageStatus === 'loading' || pageStatus ==='idle') {
+    return <Spinner/>
+  } else if (pageStatus === 'failed') {
+    return <p>{errorMessage}</p>
+  } else if (pageStatus === 'succeeded') {
+    return (
       <>
         <div className={styles.searchOptions}>
           <CategorySelect/>
@@ -59,7 +64,8 @@ function Books() {
         <Button buttonText={'Load more'}
                 onClick={handleLoadMoreClick}/>
       </>
-  )
+    )
+  }
 }
 
 export default Books

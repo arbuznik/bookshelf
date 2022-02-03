@@ -8,8 +8,6 @@ export function api(path) {
   return axios.get(baseURL + path)
 }
 
-// TODO: make promises with wrappers
-
 
 
 

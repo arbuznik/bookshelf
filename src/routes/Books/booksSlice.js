@@ -94,6 +94,8 @@ export const selectItem = state => state.books.item
 export const selectItems = state => state.books.items
 export const selectTotalItems = state => state.books.totalItems
 export const selectCategories = state => state.books.categories
+export const selectStatus = state => state.books.status
+export const selectError = state => state.books.error
 
 export default booksSlice.reducer
 
