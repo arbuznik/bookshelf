@@ -1,6 +1,5 @@
 {
   "name": "bookshelf",
-  "homepage": "https://arbuznik.github.io/bookshelf",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
