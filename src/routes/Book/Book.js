@@ -1,6 +1,6 @@
 import styles from './Book.module.scss'
 
-import {useParams} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 
@@ -32,45 +32,69 @@ function Book() {
     } = {},
   } = useSelector(selectItem)
 
+  const BackToResultsLink = () => {
+    return <Link to="/books" className={styles.link}>&#8592; Back to search results</Link>
+  }
+
   useEffect(() => {
     dispatch(fetchBook({bookId}))
   }, [bookId])
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (pageStatus === 'loading' || pageStatus ==='idle') {
-    return <Spinner/>
+    return (
+      <>
+        <BackToResultsLink/>
+        <Spinner/>
+      </>
+    )
   } else if (pageStatus === 'failed') {
-    return <p>{errorMessage}</p>
+    return (
+      <>
+        <BackToResultsLink/>
+        <p>{errorMessage}</p>
+      </>
+    )
   } else if (pageStatus === 'succeeded') {
-    const Rating = averageRating => {
+    const Rating = () => {
       if (averageRating) {
+        console.log(averageRating);
         return (
           <p className={styles.reviews}>
-            {Array.from(Array(averageRating).keys()).map((val, i) => {
+            {Array.from(Array(parseInt(averageRating)).keys()).map((val, i) => {
               return <span key={i}
                            className={styles.star}>⭐</span>
-            })} based on {ratingsCount} reviews</p>
+            })} based on {ratingsCount} {ratingsCount === 1 ? 'review' : 'reviews'}</p>
         )
+      } else {
+        return null
       }
     }
 
     return (
-      <div className={styles.book}>
-        <h1 className={styles.title}>{title}</h1>
-        <img src={large ? large : thumbnail}
-             alt={title}
-             className={styles.cover}/>
-        <div className={styles.content}>
-          {authors && <ul>{authors.map((author, index) =>
-            <p key={index}
-               className={styles.author}>{author}</p>)}</ul>}
-          {description && <p dangerouslySetInnerHTML={{__html: description}}
-                             className={styles.description}/>}
-          <Rating/>
-          {categories && <ul className={styles.categories}>{categories.map((category, index) =>
-            <p key={index}
-               className={styles.category}>{category}</p>)}</ul>}
+      <>
+        <BackToResultsLink/>
+        <div className={styles.book}>
+          <h1 className={styles.title}>{title}</h1>
+          <img src={large ? large : thumbnail}
+               alt={title}
+               className={styles.cover}/>
+          <div className={styles.content}>
+            {authors && <ul>{authors.map((author, index) =>
+              <p key={index}
+                 className={styles.author}>{author}</p>)}</ul>}
+            {description && <p dangerouslySetInnerHTML={{__html: description}}
+                               className={styles.description}/>}
+            <Rating/>
+            {categories && <ul className={styles.categories}>{categories.map((category, index) =>
+              <p key={index}
+                 className={styles.category}>{category}</p>)}</ul>}
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 }

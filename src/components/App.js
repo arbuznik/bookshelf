@@ -26,10 +26,7 @@ export default App
 
 // TODO: add animation on LoadMore button. also disable while loading to prevent more presses
 // TODO: dont show "load more" if there is nothing more to load
-// TODO: from book page link back to search results
 // TODO: error page
-// TODO: react trunk. dont make api call on first page load. or make an index page
-// TODO: multifilter category select (check if api allows that)
 // TODO: html tag semantic + aria labels
 // TODO: loading animations for snippets // books
 // TODO: select max results on listing

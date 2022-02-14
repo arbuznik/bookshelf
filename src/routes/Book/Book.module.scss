@@ -18,7 +18,7 @@
 }
 
 .categories {
-  width: min-content;
+  width: 100%;
 }
 
 .category {
@@ -32,7 +32,8 @@
   font-size: 11px;
   line-height: 16px;
   height: 16px;
-  width: max-content;
+  width: fit-content;
+  max-width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   margin: 6px 0;
@@ -66,6 +67,21 @@
 
 .star {
   padding: 3px;
+}
+
+.link {
+  text-decoration: none;
+  color: app.$primary-text-color;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  transition: opacity 0.3s;
+}
+
+.link:hover {
+  color: app.$secondary-text-color;
+  opacity: 0.8;
 }
 
 @media (min-width: 768px) {
