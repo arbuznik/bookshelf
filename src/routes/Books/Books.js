@@ -35,7 +35,7 @@ function Books() {
 
   useEffect(() => {
     dispatch(fetchBooks({query, category, order, maxResults, page}))
-  }, [query, category, order, maxResults, page])
+  }, [query, category, order, maxResults, page, dispatch])
 
   const handleLoadMoreClick = () => {
     dispatch(incrementPage())

@@ -38,7 +38,7 @@ function Book() {
 
   useEffect(() => {
     dispatch(fetchBook({bookId}))
-  }, [bookId])
+  }, [bookId, dispatch])
 
   useEffect(() => {
     window.scrollTo(0, 0);
