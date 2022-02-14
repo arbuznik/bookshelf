@@ -22,7 +22,7 @@ function SearchForm() {
     if (currentUrl.pathname !== '/') {
       setQuery(currentQuery)
     }
-  }, [currentUrl])
+  }, [currentUrl, currentQuery])
 
   const handleSubmit = evt => {
     evt.preventDefault()
