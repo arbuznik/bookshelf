@@ -3,14 +3,13 @@ import {createSlice} from "@reduxjs/toolkit"
 export const searchParamsSlice = createSlice({
   name: 'searchParams',
   initialState: {
-    query: 'monty python',
+    query: '',
     category: '',
     orderBy: 'Relevance',
     maxResults: 30,
     page: 1,
   },
   reducers: {
-    //TODO: get rid of setters. components should not be writing to state
     updateSearchQuery: (state, action) => {
       if (state.query !== action.payload) {
         state.query = action.payload

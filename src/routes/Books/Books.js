@@ -17,9 +17,11 @@ import {CategorySelect} from "../../components/CategorySelect/CategorySelect"
 import {Button} from "../../components/Button/Button"
 import {SortOrderSelect} from "../../components/SortOrderSelect/SortOrderSelect"
 import Spinner from "../../components/Spinner/Spinner"
+import {useNavigate} from "react-router-dom";
 
 function Books() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const booksList = useSelector(selectItems)
   const booksCount = useSelector(selectTotalItems)
@@ -34,7 +36,11 @@ function Books() {
   const errorMessage = useSelector(selectError)
 
   useEffect(() => {
-    dispatch(fetchBooks({query, category, order, maxResults, page}))
+    if (query === '') {
+      navigate('/')
+    } else {
+      dispatch(fetchBooks({query, category, order, maxResults, page, navigate}))
+    }
   }, [query, category, order, maxResults, page, dispatch])
 
   const handleLoadMoreClick = () => {
@@ -52,8 +58,6 @@ function Books() {
           <CategorySelect/>
           <SortOrderSelect/>
         </div>
-        <Button buttonText={'Load more'}
-                onClick={handleLoadMoreClick}/>
         <p className={styles.booksCount}>Showing {booksList.length} out of {booksCount} books</p>
         <ul className={styles.bookSnippets}>
           {booksList && booksList.map(book => {
@@ -61,8 +65,8 @@ function Books() {
                                 book={book}/>
           })}
         </ul>
-        <Button buttonText={'Load more'}
-                onClick={handleLoadMoreClick}/>
+        {booksList.length < booksCount && <Button buttonText={'Load more'}
+                                                  onClick={handleLoadMoreClick}/>}
       </>
     )
   }
