@@ -37,7 +37,7 @@ function Books() {
     dispatch(fetchBooks())
   }
 
-  if (currentPage === 1 && pageStatus === 'loading' || pageStatus ==='idle') {
+  if (currentPage === 1 && (pageStatus === 'loading' || pageStatus ==='idle')) {
     return <Spinner/>
   } else if (pageStatus === 'failed') {
     return <p>{errorMessage}</p>

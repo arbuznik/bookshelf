@@ -1,18 +1,19 @@
 @use '../app';
 
 .input {
-    background: #FFFFFF;
-    border: 1px solid #EAEAEF;
-    border-radius: 4px;
-    font-family: inherit;
-    background: url('../../images/search-icon.svg') no-repeat center;
-    background-position-x: 12px;
-    padding: 0 0 0 30px;
-    background-color: #FFFFFF;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEF;
+  border-radius: 4px;
+  font-family: inherit;
+  background: url('../../images/search-icon.svg') no-repeat center;
+  background-position-x: 12px;
+  padding: 0 0 0 30px;
+  background-color: #FFFFFF;
+  height: 40px;
 }
 
 .input:focus {
-    outline: none;
-    border: 1px solid app.$primary-color;
-    box-shadow: 0 1px 4px rgba(33, 33, 52, 0.1);
+  outline: none;
+  border: 1px solid app.$primary-color;
+  box-shadow: 0 1px 4px rgba(33, 33, 52, 0.1);
 }

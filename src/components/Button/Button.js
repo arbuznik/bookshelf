@@ -1,12 +1,20 @@
 import styles from './Button.module.scss'
+import classNames from "classnames/bind";
 
-export function Button({buttonText, onClick, isLoading}) {
+export function Button({buttonText, onClick, isLoading, hideOnMobile}) {
+  const cx = classNames.bind(styles)
+
   const Loader = () => {
-    return <div className={styles.buttonLoading}/>
+    return <div className={styles.loading}/>
   }
 
-  return <button className={styles.button}
+  const buttonClass = cx({
+    button: true,
+    hidden: hideOnMobile
+  })
+
+  return <button className={buttonClass}
                  aria-label={buttonText}
                  onClick={onClick}
-                 disabled={isLoading}>{buttonText} {isLoading && <Loader/>}</button>
+                 disabled={isLoading}>{isLoading ? 'Loading...' : buttonText} {isLoading && <Loader/>}</button>
 }

@@ -42,7 +42,7 @@ function SearchForm() {
     <Input placeholder={"Search for books"}
            value={query}
            onChange={handleInputChange}/>
-    <Button buttonText={"Search"}/>
+    <Button buttonText={"Search"} hideOnMobile={true}/>
   </form>
 }
 
