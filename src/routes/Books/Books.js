@@ -37,11 +37,7 @@ function Books() {
     dispatch(fetchBooks())
   }
 
-  const ZeroResults = () => {
-    return (
-      <p className={styles.notFound}>🌚&nbsp;&nbsp;Search something else or change category</p>
-    )
-  }
+  const ZeroResults = () => <p className={styles.notFound}>🌚&nbsp;&nbsp;Nothing! Try another search or change category</p>
 
   const ResultsListing = () => {
     return (
