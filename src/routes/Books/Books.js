@@ -39,17 +39,13 @@ function Books() {
 
   const ZeroResults = () => {
     return (
-      <p className={styles.notFound}>🌚&nbsp;&nbsp;Search something else</p>
+      <p className={styles.notFound}>🌚&nbsp;&nbsp;Search something else or change category</p>
     )
   }
 
   const ResultsListing = () => {
     return (
       <>
-        <div className={styles.searchOptions}>
-          <CategorySelect/>
-          <SortOrderSelect/>
-        </div>
         <p className={styles.booksCount}>Showing {booksList.length} out of {booksCount} books</p>
         <ul className={styles.bookSnippets}>
           {booksList && booksList.map(book => {
@@ -69,7 +65,18 @@ function Books() {
   } else if (pageStatus === 'failed') {
     return <p>{errorMessage}</p>
   } else {
-    return booksList.length === 0 ? <ZeroResults/> : <ResultsListing/>
+    return (
+      <>
+        <div className={styles.searchOptions}>
+          <CategorySelect/>
+          <SortOrderSelect/>
+        </div>
+        {booksList.length === 0 ? <ZeroResults/> : <ResultsListing/>}
+      </>
+    )
+
+
+
   }
 }
 
