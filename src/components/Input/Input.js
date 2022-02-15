@@ -1,13 +1,10 @@
 import styles from './Input.module.scss'
-import {forwardRef} from "react";
 
-export const Input = forwardRef(({placeholder, onChange, value}, ref) => {
-  return <input autoFocus
-                ref={ref}
-                type="text"
+export function Input({placeholder, onChange, value}) {
+  return <input type="text"
                 className={styles.input}
                 value={value}
                 placeholder={placeholder}
                 onChange={(evt) => onChange(evt.target.value)}
                 required/>
-})
+}

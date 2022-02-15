@@ -37,11 +37,13 @@ function Books() {
     dispatch(fetchBooks())
   }
 
-  if (currentPage === 1 && (pageStatus === 'loading' || pageStatus ==='idle')) {
-    return <Spinner/>
-  } else if (pageStatus === 'failed') {
-    return <p>{errorMessage}</p>
-  } else {
+  const ZeroResults = () => {
+    return (
+      <p className={styles.notFound}>🌚&nbsp;&nbsp;Search something else</p>
+    )
+  }
+
+  const ResultsListing = () => {
     return (
       <>
         <div className={styles.searchOptions}>
@@ -57,9 +59,17 @@ function Books() {
         </ul>
         {booksList.length < booksCount && <Button buttonText={'Load more'}
                                                   onClick={handleLoadMoreClick}
-        isLoading={pageStatus === 'loading'}/>}
+                                                  isLoading={pageStatus === 'loading'}/>}
       </>
     )
+  }
+
+  if (currentPage === 1 && (pageStatus === 'loading' || pageStatus ==='idle')) {
+    return <Spinner/>
+  } else if (pageStatus === 'failed') {
+    return <p>{errorMessage}</p>
+  } else {
+    return booksList.length === 0 ? <ZeroResults/> : <ResultsListing/>
   }
 }
 
