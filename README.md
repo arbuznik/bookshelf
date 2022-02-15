@@ -1,9 +1,11 @@
 # Bookshelf
 
+### https://arbuznik-bookshelf.netlify.app/
+
 Search and explore vast books catalog, powered by [Google books](https://developers.google.com/books)
 
 ## Stack
-- React, Redux (Toolkit), React-router
+- React, Redux (Toolkit, AsyncThunk), React-router
 - CSS-modules, SCSS
 - Axios
 
