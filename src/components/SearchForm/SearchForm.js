@@ -1,6 +1,6 @@
 import styles from "./SearchForm.module.scss"
 
-import {useEffect, useState} from "react"
+import {createRef, useEffect, useState} from "react"
 import {useLocation, useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 
@@ -15,6 +15,8 @@ function SearchForm() {
   const navigate = useNavigate()
   const currentUrl = useLocation()
 
+  const inputRef = createRef()
+
   const [query, setQuery] = useState('')
 
   const currentQuery = useSelector(selectSearchQuery)
@@ -27,6 +29,7 @@ function SearchForm() {
 
   const handleSubmit = evt => {
     evt.preventDefault()
+    inputRef.current.blur()
 
     dispatch(updateSearchQuery(query))
     dispatch(fetchBooks())
@@ -40,6 +43,7 @@ function SearchForm() {
   return <form className={styles.searchForm}
                onSubmit={handleSubmit}>
     <Input placeholder={"Search for books"}
+           ref={inputRef}
            value={query}
            onChange={handleInputChange}/>
     <Button buttonText={"Search"} hideOnMobile={true}/>
