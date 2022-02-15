@@ -22,9 +22,3 @@ function App() {
 }
 
 export default App
-
-
-// TODO: dont spin all page on load more. spin only the button
-// TODO: also disable while loading to prevent more presses
-// TODO: infinity scroll
-// TODO: loading animations for snippets // books

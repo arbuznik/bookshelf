@@ -4,7 +4,7 @@ import {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 
 import {fetchBooks, selectError, selectItems, selectStatus, selectTotalItems} from "./booksSlice"
-import {incrementPage, selectSearchQuery} from "../../components/SearchForm/searchParamsSlice"
+import {incrementPage, selectPage, selectSearchQuery} from "../../components/SearchForm/searchParamsSlice"
 
 import {BookSnippet} from "../../components/BookSnippet/BookSnippet"
 import {CategorySelect} from "../../components/CategorySelect/CategorySelect"
@@ -21,6 +21,7 @@ function Books() {
   const booksCount = useSelector(selectTotalItems)
 
   const query = useSelector(selectSearchQuery)
+  const currentPage = useSelector(selectPage)
 
   const pageStatus = useSelector(selectStatus)
   const errorMessage = useSelector(selectError)
@@ -36,11 +37,11 @@ function Books() {
     dispatch(fetchBooks())
   }
 
-  if (pageStatus === 'loading' || pageStatus ==='idle') {
+  if (currentPage === 1 && pageStatus === 'loading' || pageStatus ==='idle') {
     return <Spinner/>
   } else if (pageStatus === 'failed') {
     return <p>{errorMessage}</p>
-  } else if (pageStatus === 'succeeded') {
+  } else {
     return (
       <>
         <div className={styles.searchOptions}>
@@ -55,7 +56,8 @@ function Books() {
           })}
         </ul>
         {booksList.length < booksCount && <Button buttonText={'Load more'}
-                                                  onClick={handleLoadMoreClick}/>}
+                                                  onClick={handleLoadMoreClick}
+        isLoading={pageStatus === 'loading'}/>}
       </>
     )
   }
