@@ -6,5 +6,6 @@ export function Input({placeholder, onChange, value}) {
                 className={styles.input}
                 value={value}
                 placeholder={placeholder}
-                onChange={(evt) => onChange(evt.target.value)}/>
+                onChange={(evt) => onChange(evt.target.value)}
+                required/>
 }

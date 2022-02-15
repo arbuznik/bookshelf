@@ -9,23 +9,27 @@ const getUniqueCategories = books => {
   return Array.from(new Set(categories))
 }
 
-export const fetchBooks = createAsyncThunk('books/fetchBooks', async ({query, category, order, maxResults, page}, {getState}) => {
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async (arg, {getState}) => {
   const state = getState()
+
+  const {query, category, orderBy, maxResults, page} = state.searchParams
 
   const searchQuery = query.replace(/\s+/g, '+')
   const searchCategory = category && category !== 'All' ? `+subject:'${category}'` : ''
   const startIndex = (page * maxResults) - maxResults
-  const searchParams = `&startIndex=${startIndex}&maxResults=${maxResults}&orderBy=${order}`
+  const searchParams = `&startIndex=${startIndex}&maxResults=${maxResults}&orderBy=${orderBy}`
 
   const path = `?q=` + searchQuery + searchCategory + searchParams
 
   const response = await api(path)
 
   // could be same books in response, adding hash to ensure id is unique
-  response.data.items.forEach(item => item.id += nanoid())
+  if (response.data.items) {
+    response.data.items.forEach(item => item.id += nanoid())
+  }
 
   console.log(response.data)
-  return {books: response.data, page: state.searchParams.page}
+  return {books: response.data, page}
 })
 
 export const fetchBook = createAsyncThunk('book/fetchBook', async ({bookId}) => {
@@ -58,9 +62,9 @@ export const booksSlice = createSlice({
         const {books, page} = action.payload
         state.totalItems = books.totalItems
 
-        if (!books.items) return
-
-        if (page === 1) {
+        if (!books.items) {
+          state.items = []
+        } else if (page === 1) {
           state.items = books.items
           state.categories = ['All'].concat(getUniqueCategories(books.items))
         } else {

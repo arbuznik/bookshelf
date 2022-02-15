@@ -8,6 +8,7 @@ import {selectSearchQuery, updateSearchQuery} from "./searchParamsSlice"
 
 import {Input} from "../Input/Input"
 import {Button} from "../Button/Button"
+import {fetchBooks} from "../../routes/Books/booksSlice";
 
 function SearchForm() {
   const dispatch = useDispatch()
@@ -28,6 +29,7 @@ function SearchForm() {
     evt.preventDefault()
 
     dispatch(updateSearchQuery(query))
+    dispatch(fetchBooks())
     navigate(`/books`)
   }
 

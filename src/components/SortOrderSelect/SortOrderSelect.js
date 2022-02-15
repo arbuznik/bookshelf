@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {selectOrder, updateOrder} from "../SearchForm/searchParamsSlice"
 
 import {Select} from "../Select/Select"
+import {fetchBooks} from "../../routes/Books/booksSlice";
 
 export function SortOrderSelect() {
   const dispatch = useDispatch()
@@ -12,6 +13,7 @@ export function SortOrderSelect() {
 
   const handleChange = option => {
     dispatch(updateOrder(option))
+    dispatch(fetchBooks())
   }
 
   return (

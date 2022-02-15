@@ -69,17 +69,20 @@
   padding: 3px;
 }
 
-.link {
-  text-decoration: none;
+.backButton {
   color: app.$primary-text-color;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 20px;
   transition: opacity 0.3s;
+  border: none;
+  background-color: #FFF;
+  width: fit-content;
+  cursor: pointer;
 }
 
-.link:hover {
+.backButton:hover {
   color: app.$secondary-text-color;
   opacity: 0.8;
 }

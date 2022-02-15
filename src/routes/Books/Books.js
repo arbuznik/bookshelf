@@ -4,13 +4,7 @@ import {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 
 import {fetchBooks, selectError, selectItems, selectStatus, selectTotalItems} from "./booksSlice"
-import {
-  incrementPage,
-  selectMaxResults,
-  selectOrder, selectPage,
-  selectSearchCategory,
-  selectSearchQuery
-} from "../../components/SearchForm/searchParamsSlice"
+import {incrementPage, selectSearchQuery} from "../../components/SearchForm/searchParamsSlice"
 
 import {BookSnippet} from "../../components/BookSnippet/BookSnippet"
 import {CategorySelect} from "../../components/CategorySelect/CategorySelect"
@@ -27,10 +21,6 @@ function Books() {
   const booksCount = useSelector(selectTotalItems)
 
   const query = useSelector(selectSearchQuery)
-  const category = useSelector(selectSearchCategory)
-  const order = useSelector(selectOrder)
-  const maxResults = useSelector(selectMaxResults)
-  const page = useSelector(selectPage)
 
   const pageStatus = useSelector(selectStatus)
   const errorMessage = useSelector(selectError)
@@ -38,13 +28,12 @@ function Books() {
   useEffect(() => {
     if (query === '') {
       navigate('/')
-    } else {
-      dispatch(fetchBooks({query, category, order, maxResults, page, navigate}))
     }
-  }, [query, category, order, maxResults, page, dispatch])
+  }, [query, navigate])
 
   const handleLoadMoreClick = () => {
     dispatch(incrementPage())
+    dispatch(fetchBooks())
   }
 
   if (pageStatus === 'loading' || pageStatus ==='idle') {

@@ -24,12 +24,7 @@ function App() {
 export default App
 
 
-// TODO: add animation on LoadMore button. also disable while loading to prevent more presses
-// TODO: dont show "load more" if there is nothing more to load
-// TODO: error page
-// TODO: html tag semantic + aria labels
+// TODO: dont spin all page on load more. spin only the button
+// TODO: also disable while loading to prevent more presses
+// TODO: infinity scroll
 // TODO: loading animations for snippets // books
-// TODO: select max results on listing
-// TODO: mobile. book page opens in scrolled down state
-
-// https://github.com/fugr-ru/frontend-javascript-test-2

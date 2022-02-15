@@ -1,6 +1,6 @@
 import styles from './Book.module.scss'
 
-import {Link, useParams} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 
@@ -10,6 +10,7 @@ import Spinner from "../../components/Spinner/Spinner"
 
 function Book() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   let {bookId} = useParams()
   bookId = bookId.slice(0, -21) // remove added hash
@@ -32,8 +33,8 @@ function Book() {
     } = {},
   } = useSelector(selectItem)
 
-  const BackToResultsLink = () => {
-    return <Link to="/books" className={styles.link}>&#8592; Back to search results</Link>
+  const BackToResultsButton = () => {
+    return <button onClick={() => navigate(-1)} className={styles.backButton}>&#8592; Back to search results</button>
   }
 
   useEffect(() => {
@@ -47,21 +48,20 @@ function Book() {
   if (pageStatus === 'loading' || pageStatus ==='idle') {
     return (
       <>
-        <BackToResultsLink/>
+        <BackToResultsButton/>
         <Spinner/>
       </>
     )
   } else if (pageStatus === 'failed') {
     return (
       <>
-        <BackToResultsLink/>
+        <BackToResultsButton/>
         <p>{errorMessage}</p>
       </>
     )
   } else if (pageStatus === 'succeeded') {
     const Rating = () => {
       if (averageRating) {
-        console.log(averageRating);
         return (
           <p className={styles.reviews}>
             {Array.from(Array(parseInt(averageRating)).keys()).map((val, i) => {
@@ -76,7 +76,7 @@ function Book() {
 
     return (
       <>
-        <BackToResultsLink/>
+        <BackToResultsButton/>
         <div className={styles.book}>
           <h1 className={styles.title}>{title}</h1>
           <img src={large ? large : thumbnail}
