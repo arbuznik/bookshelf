@@ -28,7 +28,6 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (arg, {getS
     response.data.items.forEach(item => item.id += nanoid())
   }
 
-  console.log(response.data)
   return {books: response.data, page}
 })
 
@@ -36,7 +35,7 @@ export const fetchBook = createAsyncThunk('book/fetchBook', async ({bookId}) => 
   const path = `/` + bookId
 
   const response = await api(path)
-  console.log(response.data)
+
   return response.data
 })
 
