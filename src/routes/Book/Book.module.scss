@@ -12,6 +12,11 @@
   row-gap: 10px;
 }
 
+.title {
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
 .cover {
   border: 1px app.$primary-text-color solid;
   width: 100%;
