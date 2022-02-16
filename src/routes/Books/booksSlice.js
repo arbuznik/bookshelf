@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, nanoid} from "@reduxjs/toolkit"
-import {api} from "../../app/api"
+import {getBooks} from "../../app/api"
 
 const getUniqueCategories = books => {
   const categories = books
@@ -21,7 +21,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (arg, {getS
 
   const path = `?q=` + searchQuery + searchCategory + searchParams
 
-  const response = await api(path)
+  const response = await getBooks(path)
 
   // could be same books in response, adding hash to ensure id is unique
   if (response.data.items) {
@@ -34,7 +34,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (arg, {getS
 export const fetchBook = createAsyncThunk('book/fetchBook', async ({bookId}) => {
   const path = `/` + bookId
 
-  const response = await api(path)
+  const response = await getBooks(path)
 
   return response.data
 })

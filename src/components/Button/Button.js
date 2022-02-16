@@ -14,7 +14,7 @@ export function Button({buttonText, onClick, isLoading, hideOnMobile}) {
   })
 
   return <button className={buttonClass}
-                 aria-label={buttonText}
-                 onClick={onClick}
-                 disabled={isLoading}>{isLoading ? 'Loading...' : buttonText} {isLoading && <Loader/>}</button>
+    aria-label={buttonText}
+    onClick={onClick}
+    disabled={isLoading}>{isLoading ? <>Loading... <Loader/></> : buttonText}</button>
 }
