@@ -8,3 +8,11 @@ export default configureStore({
     books: booksReducer,
   }
 })
+
+// A4
+// -847Z7V
+// -XTS633
+// -KBHPF
+// -FGBSZ
+// -S9YTL
+// -6DKLZ
